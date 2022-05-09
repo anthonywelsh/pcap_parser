@@ -3,6 +3,7 @@ import sys
 import os
 import pyshark
 import csv
+import pandas as pd
 
 # reads in pcap file as second positional arg from CLI
 # only produce packet summaries from pcap
@@ -15,7 +16,7 @@ protocolList = []
 lenList = []
 infoList = []
 
-# iterates over elements in cap and create str objects
+# iterates over elements in pcap and create str objects
 # split strings into lists and append to created lists by element
 for packet in cap:
     line = str(packet)
@@ -35,6 +36,14 @@ with open('TestCap3.csv', "w") as f:
     writer = csv.writer(f)
     for row in rows:
         writer.writerow(row)
+
+
+# read-in created csv file with pcap data
+# add columns to dataframe for manipulating data with pandas
+# get dataframe values for packet length and count values in series
+df = pd.read_csv('TestCap3.csv')
+df.columns = ['No.', 'Time', 'Source', 'Destination', 'Protocol', 'Length', 'Info']
+length_counts = df['Length'].value_counts
 
 
 # argument parser for receiving CLI args

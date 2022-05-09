@@ -1,8 +1,14 @@
 import argparse
 import sys
 import os
+import pyshark
 
-#argument parser for receiving CLI args
+# reads in pcap file as second positional arg from CLI
+# only produce packet summaries from pcap
+cap = pyshark.FileCapture(sys.argv[2], only_summaries=True)
+
+
+# argument parser for receiving CLI args
 def process_pcap(file_name):
     print('Opening {}...'.format(file_name))
 

@@ -14,6 +14,19 @@ protocolList = []
 lenList = []
 infoList = []
 
+# iterates over elements in cap and create str objects
+# split strings into lists and append to created lists by element
+for packet in cap:
+    line = str(packet)
+    formattedLine = line.split(" ")
+    noList.append(formattedLine[0])
+    timeList.append(formattedLine[1])
+    sourceList.append(formattedLine[2])
+    destinationList.append(formattedLine[3])
+    protocolList.append(formattedLine[4])
+    lenList.append(formattedLine[5])
+    infoList.append(formattedLine[6])
+
 
 # argument parser for receiving CLI args
 def process_pcap(file_name):

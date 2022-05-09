@@ -26,6 +26,7 @@ for packet in cap:
     protocolList.append(formattedLine[4])
     lenList.append(formattedLine[5])
     infoList.append(formattedLine[6])
+    rows = zip(noList, timeList, sourceList, destinationList, protocolList, lenList, infoList)
 
 
 # argument parser for receiving CLI args

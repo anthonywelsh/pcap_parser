@@ -2,7 +2,7 @@ import argparse
 import sys
 import os
 
-
+#argument parser for receiving CLI args
 def process_pcap(file_name):
     print('Opening {}...'.format(file_name))
 

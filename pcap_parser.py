@@ -60,6 +60,13 @@ plt.xlabel('Byte Values')
 plt.ylabel('Frequency')
 
 
+# print mean and variance of df to terminal and show histogram plot
+print("Mean is:", df['Length'].mean())
+print("Variance is:", df['Length'].var())
+plt.savefig('TestCap3.png', format='png')
+plt.show()
+
+
 # argument parser for receiving CLI args
 def process_pcap(file_name):
     print('Opening {}...'.format(file_name))

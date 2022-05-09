@@ -2,6 +2,7 @@ import argparse
 import sys
 import os
 import pyshark
+import csv
 
 # reads in pcap file as second positional arg from CLI
 # only produce packet summaries from pcap
@@ -27,6 +28,13 @@ for packet in cap:
     lenList.append(formattedLine[5])
     infoList.append(formattedLine[6])
     rows = zip(noList, timeList, sourceList, destinationList, protocolList, lenList, infoList)
+
+
+# writes data to csv file
+with open('TestCap3.csv', "w") as f:
+    writer = csv.writer(f)
+    for row in rows:
+        writer.writerow(row)
 
 
 # argument parser for receiving CLI args

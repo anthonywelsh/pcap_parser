@@ -1,11 +1,12 @@
 import argparse
 import sys
 import os
-import pyshark
 import csv
 import pandas as pd
+import pyshark
 import seaborn as sns
 import matplotlib.pyplot as plt
+
 
 # reads in pcap file as second positional arg from CLI
 # only produce packet summaries from pcap
@@ -17,6 +18,7 @@ destinationList = []
 protocolList = []
 lenList = []
 infoList = []
+
 
 # iterates over elements in pcap and create str objects
 # split strings into lists and append to created lists by element

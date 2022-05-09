@@ -4,6 +4,8 @@ import os
 import pyshark
 import csv
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # reads in pcap file as second positional arg from CLI
 # only produce packet summaries from pcap
@@ -44,6 +46,18 @@ with open('TestCap3.csv', "w") as f:
 df = pd.read_csv('TestCap3.csv')
 df.columns = ['No.', 'Time', 'Source', 'Destination', 'Protocol', 'Length', 'Info']
 length_counts = df['Length'].value_counts
+
+
+# plot matplotlib histogram with seaborn interface
+sns.set()
+fig, ax = plt.subplots(figsize=(10, 6))
+plt.hist(df['Length'], alpha=0.5, color=['g'], bins=15)
+plt.xlim([0, 1600])
+plt.ylim([0, 6000])
+# plt.yticks(np.arange(1, 100, 5000))
+# plt.xticks(np.arange(1, 100, 1500))
+plt.xlabel('Byte Values')
+plt.ylabel('Frequency')
 
 
 # argument parser for receiving CLI args

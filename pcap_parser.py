@@ -6,6 +6,13 @@ import pyshark
 # reads in pcap file as second positional arg from CLI
 # only produce packet summaries from pcap
 cap = pyshark.FileCapture(sys.argv[2], only_summaries=True)
+noList = []
+timeList = []
+sourceList = []
+destinationList = []
+protocolList = []
+lenList = []
+infoList = []
 
 
 # argument parser for receiving CLI args

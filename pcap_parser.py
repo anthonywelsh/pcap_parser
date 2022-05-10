@@ -21,7 +21,7 @@ infoList = []
 
 
 # iterates over elements in pcap and create str objects
-# split strings into lists and append to created lists by element
+# split strings and append to created lists by element
 for packet in cap:
     line = str(packet)
     formattedLine = line.split(" ")
@@ -36,7 +36,7 @@ for packet in cap:
 
 
 # writes data to csv file
-with open('TestCap3.csv', "w") as f:
+with open('TestCap1.csv', "w") as f:
     writer = csv.writer(f)
     for row in rows:
         writer.writerow(row)
@@ -44,28 +44,24 @@ with open('TestCap3.csv', "w") as f:
 
 # read-in created csv file with pcap data
 # add columns to dataframe for manipulating data with pandas
-# get dataframe values for packet length and count values in series
-df = pd.read_csv('TestCap3.csv')
+df = pd.read_csv('TestCap1.csv')
 df.columns = ['No.', 'Time', 'Source', 'Destination', 'Protocol', 'Length', 'Info']
-length_counts = df['Length'].value_counts
 
 
 # plot matplotlib histogram with seaborn interface
 sns.set()
 fig, ax = plt.subplots(figsize=(10, 6))
-plt.hist(df['Length'], alpha=0.5, color=['g'], bins=15)
-plt.xlim([0, 1600])
-plt.ylim([0, 6000])
-# plt.yticks(np.arange(1, 100, 5000))
-# plt.xticks(np.arange(1, 100, 1500))
-plt.xlabel('Byte Values')
+plt.hist(df['Length'], alpha=0.5, color=['b'], bins=20)
+# plt.xlim([0, 1600])
+# plt.ylim([0, 5000])
+plt.xlabel('Packet Length')
 plt.ylabel('Frequency')
 
 
 # print mean and variance of df to terminal and show histogram plot
 print("Mean is:", df['Length'].mean())
 print("Variance is:", df['Length'].var())
-plt.savefig('TestCap3.png', format='png')
+plt.savefig('TestCap1.png', format='png')
 plt.show()
 
 
